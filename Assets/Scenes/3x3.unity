@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840017966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -251,7 +251,10 @@ MonoBehaviour:
   maxSize: 5
   minSize: 3
   mapSize: 3
-  Cube: {fileID: 9027221997996385802, guid: 9faa31f9fbe440d439765baff4be0e64, type: 3}
+  BrightCube: {fileID: 9027221997996385802, guid: 9faa31f9fbe440d439765baff4be0e64,
+    type: 3}
+  DarkCube: {fileID: 3597785988217496851, guid: 302a75a1bc09ff648b16c0f7077f3bcf,
+    type: 3}
 --- !u!1 &1783135000
 GameObject:
   m_ObjectHideFlags: 0

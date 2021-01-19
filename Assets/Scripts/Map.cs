@@ -11,7 +11,8 @@ public class Map : MonoBehaviour
     private int mapSize = 3;
 
     [Header("Sources")]
-    public GameObject Cube;
+    public GameObject BrightCube;
+    public GameObject DarkCube;
 
     public int MapSize
     {
@@ -27,22 +28,27 @@ public class Map : MonoBehaviour
 
     private void Awake()
     {
-        print(MapSize);
-        MakingMap();
+        StartCoroutine(SetBoard());
     }
 
-    private void MakingMap()
+    IEnumerator SetBoard()
     {
         Vector3 cubePos = new Vector3(0, 0, 10);
 
-        for(int i = 0; i < MapSize; i++)
+        for (int i = 0; i < MapSize; i++)
         {
-            for(int j = 0; j < MapSize; j++)
+            for (int j = 0; j < MapSize; j++)
             {
                 cubePos.x = j * 3;
                 cubePos.y = i * 3;
-                Instantiate(Cube, cubePos, Quaternion.Euler(Vector3.zero));
+
+                var cubeType = (i + j) % 2 == 0 ? BrightCube : DarkCube;
+                Instantiate(cubeType, cubePos, Quaternion.Euler(Vector3.zero));
+
+                yield return new WaitForSeconds(0.3f);
             }
         }
+
+        yield break;
     }
 }
