@@ -7,14 +7,16 @@ public class Map : MonoBehaviour
     [Header ("MapSetting")]
     public int maxSize = 5;
     public int minSize = 3;
-    [SerializeField]
-    private int mapSize = 3;
 
     [Header("Sources")]
     public GameObject BrightCube;
     public GameObject DarkCube;
     public GameObject BorderPrefab;
 
+    [Header ("MapSetting")]
+    public bool FinishSetting = false;
+
+    private int mapSize = 3;
     private float cubeWidth;
 
     public int MapSize
@@ -67,15 +69,19 @@ public class Map : MonoBehaviour
         GameObject Border = Instantiate(BorderPrefab, startPos, Quaternion.identity);
         Border.transform.localScale = new Vector3(MapSize, MapSize, 1);
 
+        float timer = 0;
+
         while (true)
         {
-            if (Border.transform.position.z >= toPos.z)
+            timer += Time.deltaTime;
+            Border.transform.position = Vector3.Lerp(startPos, toPos, timer);
+
+            if (timer >= 1)
             {
-                Debug.Log("MapSetting Finished");
+                FinishSetting = true;
                 break;
             }
 
-            Border.transform.position = Vector3.Lerp(Border.transform.position, toPos, Time.deltaTime * 3);
             yield return new WaitForFixedUpdate();
         }
 
