@@ -39,13 +39,13 @@ public class Map : MonoBehaviour
         {
             for (int j = 0; j < MapSize; j++)
             {
-                cubePos.x = j * 3;
+                cubePos.x = j * 3; //BrightCube.transform.localScale.x
                 cubePos.y = i * 3;
 
                 var cubeType = (i + j) % 2 == 0 ? BrightCube : DarkCube;
                 Instantiate(cubeType, cubePos, Quaternion.Euler(Vector3.zero));
 
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.3f / MapSize);
             }
         }
 
