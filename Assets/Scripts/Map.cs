@@ -13,10 +13,11 @@ public class Map : MonoBehaviour
     public GameObject DarkCube;
     public GameObject BorderPrefab;
 
-    [Header ("MapSetting")]
+    [Header ("NowInfo")]
     public bool FinishSetting = false;
-
+    [SerializeField]
     private int mapSize = 3;
+
     private float cubeWidth;
 
     public int MapSize
@@ -64,7 +65,7 @@ public class Map : MonoBehaviour
         float centerWidth = mapSize * halfWidth - halfWidth;
 
         Vector3 startPos = new Vector3(centerWidth, centerWidth, -2);
-        Vector3 toPos = new Vector3(centerWidth, centerWidth, 10);
+        Vector3 toPos = new Vector3(centerWidth, centerWidth, 9.75f);
 
         GameObject Border = Instantiate(BorderPrefab, startPos, Quaternion.identity);
         Border.transform.localScale = new Vector3(MapSize, MapSize, 1);

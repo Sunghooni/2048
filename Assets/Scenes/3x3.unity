@@ -264,13 +264,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSize: 5
   minSize: 3
-  mapSize: 3
   BrightCube: {fileID: 9027221997996385802, guid: 9faa31f9fbe440d439765baff4be0e64,
     type: 3}
   DarkCube: {fileID: 3597785988217496851, guid: 302a75a1bc09ff648b16c0f7077f3bcf,
     type: 3}
   BorderPrefab: {fileID: 2371352580920276705, guid: 70533fddeb2c20248a7a2d232418f23b,
     type: 3}
+  FinishSetting: 0
+  mapSize: 5
 --- !u!1 &1783135000
 GameObject:
   m_ObjectHideFlags: 0
