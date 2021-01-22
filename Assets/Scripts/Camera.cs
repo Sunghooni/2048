@@ -18,6 +18,6 @@ public class Camera : MonoBehaviour
         float width = Map.MapSize * cubeWidth / 2 - cubeWidth / 2;
         float zPos = (Map.MapSize - 3) * fixZ;
 
-        gameObject.transform.position = new Vector3(width, width, zPos);
+        gameObject.transform.position = new Vector3(width, -width, zPos);
     }
 }

@@ -47,7 +47,7 @@ public class Map : MonoBehaviour
             for (int j = 0; j < MapSize; j++)
             {
                 cubePos.x = j * cubeWidth;
-                cubePos.y = i * cubeWidth;
+                cubePos.y = i * cubeWidth * -1;
 
                 GameObject cubeType = (i + j) % 2 == 0 ? BrightCube : DarkCube;
                 Instantiate(cubeType, cubePos, Quaternion.identity);
@@ -64,8 +64,8 @@ public class Map : MonoBehaviour
         float halfWidth = cubeWidth / 2;
         float centerWidth = mapSize * halfWidth - halfWidth;
 
-        Vector3 startPos = new Vector3(centerWidth, centerWidth, -2);
-        Vector3 toPos = new Vector3(centerWidth, centerWidth, 9.75f);
+        Vector3 startPos = new Vector3(centerWidth, -centerWidth, -2);
+        Vector3 toPos = new Vector3(centerWidth, -centerWidth, 9.75f);
 
         GameObject Border = Instantiate(BorderPrefab, startPos, Quaternion.identity);
         Border.transform.localScale = new Vector3(MapSize, MapSize, 1);
