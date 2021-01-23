@@ -10,15 +10,28 @@ public class Cube : MonoBehaviour
 
     private int mapSize;
     private float cubeWidth;
+    private bool startSetting = false;
 
     private void Awake()
     {
         cubeWidth = CubePrefab.transform.localScale.x;
         mapSize = Map.MapSize;
         CubeManager = new GameObject[mapSize, mapSize];
+    }
 
-        Invoke("SetCube", 3f);
-        Invoke("SetCube", 3f);
+    private void Update()
+    {
+        SetBasicCubes();
+    }
+
+    private void SetBasicCubes()
+    {
+        if (Map.FinishSetting && !startSetting)
+        {
+            SetCube();
+            SetCube();
+            startSetting = true;
+        }
     }
 
     private void SetCube()
