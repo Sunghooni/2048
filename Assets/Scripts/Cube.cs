@@ -4,79 +4,41 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public Map Map;
-    public GameObject CubePrefab;
-    public GameObject[,] CubeManager;
-
-    private int mapSize;
-    private float cubeWidth;
-    private bool startSetting = false;
+    public int value;
+    public bool collapable = false;
 
     private void Awake()
     {
-        cubeWidth = CubePrefab.transform.localScale.x;
-        mapSize = Map.MapSize;
-        CubeManager = new GameObject[mapSize, mapSize];
+        SetValue();
     }
 
-    private void Update()
+    private void SetValue()
     {
-        SetBasicCubes();
+        int random = Random.Range(0, 10);
+        value = random < 1 ? 4 : 2;
     }
 
-    private void SetBasicCubes()
+    public void Move(Vector3 toPos)
     {
-        if (Map.FinishSetting && !startSetting)
+        StartCoroutine(MoveAct(toPos));
+    }
+
+    IEnumerator MoveAct(Vector3 toPos)
+    {
+        float timer = 0;
+        Vector3 originPos = gameObject.transform.position;
+
+        while(timer <= 1)
         {
-            SetCube();
-            SetCube();
-            startSetting = true;
+            timer += Time.deltaTime;
+            gameObject.transform.position = Vector3.Lerp(originPos, toPos, timer);
+
+            yield return new WaitForFixedUpdate();
         }
-    }
-
-    private void SetCube()
-    {
-        Vector3 pos = GetRandomPos();
-
-        int height = int.Parse((pos.y / -cubeWidth).ToString());
-        int width = int.Parse((pos.x / cubeWidth).ToString());
-        CubeManager[height, width] = Instantiate(CubePrefab, pos, Quaternion.identity);
-    }
-
-    private Vector3 GetRandomPos()
-    {
-        int emptyNum = 0;
-
-        for(int i = 0; i < mapSize; i++)
+        if(collapable)
         {
-            for(int j = 0; j < mapSize; j++)
-            {
-                if(CubeManager[i, j] == null)
-                {
-                    emptyNum++;
-                }
-            }
+            Debug.Log("Collab");
         }
-
-        int randomNum = Random.Range(0, emptyNum);
-        int cnt = 0;
-
-        for(int i = 0; i < mapSize; i++)
-        {
-            for(int j = 0; j < mapSize; j++)
-            {
-                if(CubeManager[i, j] == null)
-                {
-                    if (cnt == randomNum)
-                    {
-                        Vector3 pos = new Vector3(j * cubeWidth, i * -cubeWidth, 9.5f);
-                        return pos;
-                    }
-                    else cnt++;
-                }
-            }
-        }
-
-        return Vector3.zero;
+        yield return null;
     }
 }
