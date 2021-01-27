@@ -7,6 +7,7 @@ public class CubeManager : MonoBehaviour
     public Map Map;
     public GameObject CubePrefab;
     public GameObject[,] CubeArray;
+    public bool canMove = true;
 
     private int mapSize;
     private float cubeWidth;
@@ -19,7 +20,7 @@ public class CubeManager : MonoBehaviour
 
         SetNewCube();
         SetNewCube();
-        RightMove();
+        MoveCtrl("Right");
     }
 
     //새로운 큐브 생성 관련 함수들
@@ -70,7 +71,7 @@ public class CubeManager : MonoBehaviour
     }
 
     //입력에 따른 이동명령
-    public void RightMove()
+    public void MoveCtrl(string dir)
     {
         for(int i = 0; i < mapSize; i++)
         {
@@ -81,20 +82,21 @@ public class CubeManager : MonoBehaviour
                     continue;
                 }
 
-                Vector3 toPos = new Vector3((j + 1) * cubeWidth, i * -cubeWidth, 9.5f);
+                GameObject compareCube = CompareCube(dir, i, j);
+                Vector3 comparePos = ComparePos(dir, i, j);
 
-                if (CubeArray[i, j + 1] == null)
+                if (compareCube == null)
                 {
-                    CubeArray[i, j].GetComponent<Cube>().Move(toPos);
+                    CubeArray[i, j].GetComponent<Cube>().Move(comparePos);
                 }
                 else
                 {
                     var thisCube = CubeArray[i, j].GetComponent<Cube>();
-                    var toCube = CubeArray[i, j + 1].GetComponent<Cube>();
+                    var toCube = compareCube.GetComponent<Cube>();
 
                     if(thisCube.value == toCube.value)
                     {
-                        thisCube.Move(toPos);
+                        thisCube.Move(comparePos);
                         thisCube.collapable = true;
                         thisCube.value = thisCube.value * 2;
                     }
@@ -104,5 +106,20 @@ public class CubeManager : MonoBehaviour
                 CubeArray[i, j] = null;
             }
         }
+    }
+
+    //상하좌우 이동 방향에 따라 비교할 대상 반환
+    private GameObject CompareCube(string dir, int i, int j)
+    {
+        if (dir == "Right") return CubeArray[i, j + 1];
+
+        return null;
+    }
+
+    private Vector3 ComparePos(string dir, int i, int j)
+    {
+        if (dir == "Right") return new Vector3((j + 1) * cubeWidth, i * -cubeWidth, 9.5f);
+        
+        return Vector3.zero;
     }
 }

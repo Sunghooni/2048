@@ -6,6 +6,7 @@ public class Cube : MonoBehaviour
 {
     public int value;
     public bool collapable = false;
+    public bool checkTurn = false;
 
     private void Awake()
     {
@@ -20,10 +21,10 @@ public class Cube : MonoBehaviour
 
     public void Move(Vector3 toPos)
     {
-        StartCoroutine(MoveAct(toPos));
+        StartCoroutine(MoveMotion(toPos));
     }
 
-    IEnumerator MoveAct(Vector3 toPos)
+    IEnumerator MoveMotion(Vector3 toPos)
     {
         float timer = 0;
         Vector3 originPos = gameObject.transform.position;
@@ -38,6 +39,10 @@ public class Cube : MonoBehaviour
         if(collapable)
         {
             Debug.Log("Collab");
+        }
+        if(checkTurn)
+        {
+
         }
         yield return null;
     }
