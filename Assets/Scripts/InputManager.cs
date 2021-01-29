@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     public CubeManager CubeManager;
-    public Vector3 inputDir;
+    public bool canInput = true;
 
     private float horz;
     private float vert;
@@ -20,6 +20,16 @@ public class InputManager : MonoBehaviour
         horz = Input.GetAxisRaw("Horizontal");
         vert = Input.GetAxisRaw("Vertical");
 
-        inputDir = new Vector3(vert, horz, 0);
+        if(canInput)
+        {
+            if (horz == 1)
+                CubeManager.RightMoveCtrl();
+            else if (horz == -1)
+                CubeManager.LeftMoveCtrl();
+            else if (vert == 1)
+                CubeManager.UpMoveCtrl();
+            else if (vert == -1)
+                CubeManager.DownMoveCtrl();
+        }
     }
 }
