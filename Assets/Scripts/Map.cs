@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Map : MonoBehaviour
 {
+    [Header("Scripts")]
+    public CubeManager CubeManager;
+
     [Header ("MapSetting")]
     public int maxSize = 5;
     public int minSize = 3;
@@ -80,6 +83,8 @@ public class Map : MonoBehaviour
             if (timer >= 1)
             {
                 FinishSetting = true;
+                CubeManager.SetNewCube(); //시작시 기본 제공 2개
+                CubeManager.SetNewCube();
                 break;
             }
 

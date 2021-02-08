@@ -12,6 +12,21 @@ public class Cube : MonoBehaviour
     private InputManager InputManager;
     private CubeManager CubeManager;
 
+    private Color[] ColorArray = new Color[11] 
+    {
+        new Color(213, 213, 213),
+        new Color(250, 224, 212),
+        new Color(255, 193, 158),
+        new Color(255, 168, 115),
+        new Color(246, 246, 246),
+        new Color(246, 246, 246),
+        new Color(246, 246, 246),
+        new Color(246, 246, 246),
+        new Color(246, 246, 246),
+        new Color(246, 246, 246),
+        new Color(246, 246, 246)
+    };
+
     private void Awake()
     {
         InputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
@@ -23,6 +38,11 @@ public class Cube : MonoBehaviour
     {
         int random = Random.Range(0, 10);
         value = random < 1 ? 4 : 2;
+
+        if (value == 2)
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", ColorArray[0]);
+        else
+            gameObject.GetComponent<Renderer>().material.SetColor("_Color", ColorArray[1]);
     }
 
     public void Move(Vector3 toPos)
@@ -50,15 +70,22 @@ public class Cube : MonoBehaviour
 
             isCollaped = false;
             collapable = false;
+
+            ChangeColor();
         }
 
         if (!InputManager.canInput)
         {
-            Debug.Log("NewCube");
             InputManager.canInput = true;
             CubeManager.SetNewCube();
         }
 
         yield break;
+    }
+
+    private void ChangeColor()
+    {
+        //int arrayNum = ;
+        //gameObject.GetComponent<Renderer>().material.SetColor("_Color", ColorArray[arrayNum]);
     }
 }
