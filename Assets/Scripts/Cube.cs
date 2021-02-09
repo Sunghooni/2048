@@ -14,23 +14,24 @@ public class Cube : MonoBehaviour
 
     private Color[] ColorArray = new Color[11] 
     {
-        new Color(213, 213, 213),
-        new Color(250, 224, 212),
-        new Color(255, 193, 158),
-        new Color(255, 168, 115),
-        new Color(246, 246, 246),
-        new Color(246, 246, 246),
-        new Color(246, 246, 246),
-        new Color(246, 246, 246),
-        new Color(246, 246, 246),
-        new Color(246, 246, 246),
-        new Color(246, 246, 246)
+        new Color(234/255f, 234/255f, 234/255f),
+        new Color(250/255f, 224/255f, 212/255f),
+        new Color(242/255f, 150/255f, 97/255f),
+        new Color(224/255f, 132/255f, 79/255f),
+        new Color(204/255f, 61/255f, 61/255f), //Original ^
+        new Color(209/255f, 178/255f, 255/255f), //Temp v
+        new Color(165/255f, 102/255f, 255/255f),
+        new Color(128/255f, 65/255f, 217/255f),
+        new Color(250/255f, 237/255f, 125/255f),
+        new Color(242/255f, 203/255f, 97/255f),
+        new Color(116/255f, 77/255f, 0/255f)
     };
 
     private void Awake()
     {
         InputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         CubeManager = GameObject.Find("CubeManager").GetComponent<CubeManager>();
+
         SetStartValue();
     }
 
@@ -39,10 +40,7 @@ public class Cube : MonoBehaviour
         int random = Random.Range(0, 10);
         value = random < 1 ? 4 : 2;
 
-        if (value == 2)
-            gameObject.GetComponent<Renderer>().material.SetColor("_Color", ColorArray[0]);
-        else
-            gameObject.GetComponent<Renderer>().material.SetColor("_Color", ColorArray[1]);
+        ChangeColor();
     }
 
     public void Move(Vector3 toPos)
@@ -85,7 +83,14 @@ public class Cube : MonoBehaviour
 
     private void ChangeColor()
     {
-        //int arrayNum = ;
-        //gameObject.GetComponent<Renderer>().material.SetColor("_Color", ColorArray[arrayNum]);
+        int arrayNum = -1;
+
+        for(int i = value; i != 1; i /= 2)
+        {
+            arrayNum++;
+        }
+
+        gameObject.GetComponent<Renderer>().material.color = ColorArray[arrayNum];
+        print("C.C" + " " + arrayNum);
     }
 }

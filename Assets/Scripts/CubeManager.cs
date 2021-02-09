@@ -14,7 +14,7 @@ public class CubeManager : MonoBehaviour
 
     private void Awake()
     {
-        cubeWidth = CubePrefab.transform.localScale.x;
+        cubeWidth = Map.BrightCube.transform.localScale.x;
         mapSize = Map.MapSize;
         CubeArray = new GameObject[mapSize, mapSize];
     }
