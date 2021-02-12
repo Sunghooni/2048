@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Cube : MonoBehaviour
@@ -12,6 +13,7 @@ public class Cube : MonoBehaviour
 
     private InputManager InputManager;
     private CubeManager CubeManager;
+    private TextMeshPro TextMeshPro;
 
     private Color[] ColorArray = new Color[11] 
     {
@@ -32,7 +34,8 @@ public class Cube : MonoBehaviour
     {
         InputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         CubeManager = GameObject.Find("CubeManager").GetComponent<CubeManager>();
-
+        TextMeshPro = transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshPro>();
+        
         SetStartValue();
     }
 
@@ -64,12 +67,11 @@ public class Cube : MonoBehaviour
 
         if (collapable)
         {
-            Destroy(collapCube);
-            value = value * 2;
-
+            value *= 2;
             isCollaped = false;
             collapable = false;
 
+            Destroy(collapCube);
             ChangeColor();
         }
 
@@ -92,6 +94,7 @@ public class Cube : MonoBehaviour
         }
 
         gameObject.GetComponent<Renderer>().material.color = ColorArray[arrayNum];
+        TextMeshPro.text = value.ToString();
         print("C.C" + " " + arrayNum);
     }
 }
