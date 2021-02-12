@@ -5,6 +5,7 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     public int value;
+    public float speed = 3;
     public bool collapable = false;
     public bool isCollaped = false;
     public GameObject collapCube = null;
@@ -55,7 +56,7 @@ public class Cube : MonoBehaviour
 
         while (timer <= 1)
         {
-            timer += Time.deltaTime;
+            timer += Time.deltaTime * speed;
             gameObject.transform.position = Vector3.Lerp(originPos, toPos, timer);
 
             yield return new WaitForFixedUpdate();
