@@ -20,7 +20,7 @@ public class Cube : MonoBehaviour
         new Color(234/255f, 234/255f, 234/255f),
         new Color(250/255f, 224/255f, 212/255f),
         new Color(242/255f, 150/255f, 97/255f),
-        new Color(224/255f, 132/255f, 79/255f),
+        new Color(170/255f, 78/255f, 25/255f),
         new Color(204/255f, 61/255f, 61/255f), //Original ^
         new Color(209/255f, 178/255f, 255/255f), //Temp v
         new Color(165/255f, 102/255f, 255/255f),
@@ -95,6 +95,5 @@ public class Cube : MonoBehaviour
 
         gameObject.GetComponent<Renderer>().material.color = ColorArray[arrayNum];
         TextMeshPro.text = value.ToString();
-        print("C.C" + " " + arrayNum);
     }
 }
