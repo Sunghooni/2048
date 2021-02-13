@@ -489,7 +489,7 @@ GameObject:
   - component: {fileID: 1463101333}
   - component: {fileID: 1463101335}
   m_Layer: 5
-  m_Name: Text
+  m_Name: ScoreManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,7 +621,7 @@ MonoBehaviour:
   BorderPrefab: {fileID: 2371352580920276705, guid: 70533fddeb2c20248a7a2d232418f23b,
     type: 3}
   FinishSetting: 0
-  mapSize: 3
+  mapSize: 5
 --- !u!1 &1783135000
 GameObject:
   m_ObjectHideFlags: 0

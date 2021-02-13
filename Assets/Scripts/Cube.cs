@@ -14,6 +14,7 @@ public class Cube : MonoBehaviour
     private InputManager InputManager;
     private CubeManager CubeManager;
     private TextMeshPro TextMeshPro;
+    private ScoreManager ScoreManager;
 
     private Color[] ColorArray = new Color[11] 
     {
@@ -35,7 +36,8 @@ public class Cube : MonoBehaviour
         InputManager = GameObject.Find("InputManager").GetComponent<InputManager>();
         CubeManager = GameObject.Find("CubeManager").GetComponent<CubeManager>();
         TextMeshPro = transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshPro>();
-        
+        ScoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+
         SetStartValue();
     }
 
@@ -73,6 +75,7 @@ public class Cube : MonoBehaviour
 
             Destroy(collapCube);
             ChangeColor();
+            AddValueToScore();
         }
 
         if (!InputManager.canInput)
@@ -95,5 +98,10 @@ public class Cube : MonoBehaviour
 
         gameObject.GetComponent<Renderer>().material.color = ColorArray[arrayNum];
         TextMeshPro.text = value.ToString();
+    }
+
+    private void AddValueToScore()
+    {
+        ScoreManager.totalScore += value;
     }
 }
