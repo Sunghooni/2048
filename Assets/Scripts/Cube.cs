@@ -78,7 +78,7 @@ public class Cube : MonoBehaviour
             AddValueToScore();
         }
 
-        if (!InputManager.canInput)
+        if (!InputManager.canInput) //입력 가능 확인
         {
             InputManager.canInput = true;
             CubeManager.SetNewCube();

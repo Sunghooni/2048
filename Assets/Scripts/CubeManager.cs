@@ -65,7 +65,7 @@ public class CubeManager : MonoBehaviour
         return Vector3.zero;
     }
 
-    //WASD ORDER FUNCS *NEED REFACTORING*
+    //WASD ORDER FUNCS
     public void RightMoveCtrl()
     {
         bool isActed = false;
