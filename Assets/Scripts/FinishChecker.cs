@@ -6,17 +6,6 @@ public class FinishChecker : MonoBehaviour
 {
     public CubeManager _CubeManager;
 
-    private void Start()
-    {
-        InvokeRepeating("ReportState", 1f, 1f); //Check Every 1 Sec
-    }
-
-    public void ReportState()
-    {
-        Debug.Log("2048 :" + " " + Check2048().ToString());
-        Debug.Log("CanMove :" + " " + CheckMovable().ToString());
-    }
-
     public bool Check2048() //Check is Completed 2048
     {
         GameObject[,] cubeArray = _CubeManager.CubeArray;
