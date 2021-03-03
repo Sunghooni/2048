@@ -22,6 +22,7 @@ public class Map : MonoBehaviour
     private int mapSize = 3;
 
     private float cubeWidth;
+    private float firstCubeTerm = 0.5f;
 
     public int MapSize
     {
@@ -82,9 +83,10 @@ public class Map : MonoBehaviour
 
             if (timer >= 1)
             {
-                FinishSetting = true;
+                yield return new WaitForSeconds(firstCubeTerm);
                 CubeManager.SetNewCube(); //시작시 기본 제공 2개
                 CubeManager.SetNewCube();
+                FinishSetting = true;
                 break;
             }
 

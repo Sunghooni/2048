@@ -27,6 +27,7 @@ public class CubeManager : MonoBehaviour
         int height = int.Parse((pos.y / -cubeWidth).ToString());
         int width = int.Parse((pos.x / cubeWidth).ToString());
         CubeArray[height, width] = Instantiate(CubePrefab, pos, Quaternion.identity);
+        SoundManager.instance.PlayCubeInstant();
     }
     private Vector3 GetRandomPos()
     {
