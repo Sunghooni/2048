@@ -37,7 +37,10 @@ public class Cube : MonoBehaviour
         CubeManager = GameObject.Find("CubeManager").GetComponent<CubeManager>();
         TextMeshPro = transform.Find("Text (TMP)").gameObject.GetComponent<TextMeshPro>();
         ScoreManager = GameObject.Find("ScoreManager").GetComponent<ScoreManager>();
+    }
 
+    private void Start()
+    {
         SetStartValue();
     }
 

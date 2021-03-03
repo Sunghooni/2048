@@ -10,6 +10,7 @@ public class FinishManager : MonoBehaviour
     public GameObject FinishPanel;
 
     public bool isFinished = false;
+    private bool playedFinishGame = false;
 
     private void Start()
     {
@@ -23,6 +24,12 @@ public class FinishManager : MonoBehaviour
             _InputManager.canInput = false; //Cannot Input More
             FinishPanel.SetActive(true);
             isFinished = true;
+
+            if(!playedFinishGame)
+            {
+                playedFinishGame = true;
+                SoundManager.instance.PlayFinishGame();
+            }
         }
     }
 }

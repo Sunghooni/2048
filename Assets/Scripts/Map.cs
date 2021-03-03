@@ -36,7 +36,7 @@ public class Map : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         cubeWidth = BrightCube.transform.localScale.x;
         StartCoroutine(SetBoard());
@@ -55,6 +55,7 @@ public class Map : MonoBehaviour
 
                 GameObject cubeType = (i + j) % 2 == 0 ? BrightCube : DarkCube;
                 Instantiate(cubeType, cubePos, Quaternion.identity);
+                SoundManager.instance.PlayMapCube();
 
                 yield return new WaitForSeconds(0.3f / MapSize);
             }
@@ -83,6 +84,8 @@ public class Map : MonoBehaviour
 
             if (timer >= 1)
             {
+                SoundManager.instance.PlayMapBorder();
+
                 yield return new WaitForSeconds(firstCubeTerm);
                 CubeManager.SetNewCube(); //시작시 기본 제공 2개
                 CubeManager.SetNewCube();

@@ -212,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 437908119}
   m_Layer: 0
-  m_Name: ----------------UI Objects----------------------
+  m_Name: ---------------UI Objects-----------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,7 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 810401376}
   m_Layer: 0
-  m_Name: ----------------Ingame Objects------------------
+  m_Name: ---------------Ingame Objects------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -443,7 +443,7 @@ GameObject:
   m_Component:
   - component: {fileID: 971190327}
   m_Layer: 0
-  m_Name: ----------------Default Objects-----------------
+  m_Name: ---------------Default Objects-----------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -779,7 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1460966844}
   m_Layer: 0
-  m_Name: ----------------Major Objects-------------------
+  m_Name: ---------------Major Objects-------------
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1008,7 +1008,7 @@ MonoBehaviour:
   mapCube: {fileID: 8300000, guid: b0276a5af3c9be842a8e686360408940, type: 3}
   mapBorder: {fileID: 8300000, guid: be3fd741ee2405d4a8583faf6b981d25, type: 3}
   cubeInstant: {fileID: 8300000, guid: 2de9db4038ab7954bb257a90147c8324, type: 3}
-  finishGame: {fileID: 0}
+  finishGame: {fileID: 8300000, guid: 4cee8eeabbc03ff4a89c79e9685275ac, type: 3}
 --- !u!82 &1771737296
 AudioSource:
   m_ObjectHideFlags: 0
