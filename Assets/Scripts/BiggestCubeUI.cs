@@ -38,7 +38,7 @@ public class BiggestCubeUI : MonoBehaviour
         for (int i = 0; i < texts.Length; i++)
         {
             gameObject.GetComponent<Text>().text = texts.Substring(0, i + 1);
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.15f);
         }
 
         yield break;

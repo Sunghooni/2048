@@ -34,7 +34,7 @@ public class ScoreUI : MonoBehaviour
         if (timer > showDetailsTime)
         {
             StartCoroutine(biggestCubeUI.GetComponent<BiggestCubeUI>().ShowTexts());
-            //StartCoroutine(playTimeUI.GetComponent<PlayTimeUI>().ShowTexts());
+            StartCoroutine(playTimeUI.GetComponent<PlayTimeUI>().ShowTexts());
             finishMove = true;
         }
         else if(_FinishManager.isFinished)
