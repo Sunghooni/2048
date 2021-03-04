@@ -33,12 +33,13 @@ public class BiggestCubeUI : MonoBehaviour
 
     public IEnumerator ShowTexts()
     {
+        float typingTerm = 0.15f;
         texts += GetBiggestValue().ToString();
 
         for (int i = 0; i < texts.Length; i++)
         {
             gameObject.GetComponent<Text>().text = texts.Substring(0, i + 1);
-            yield return new WaitForSeconds(0.15f);
+            yield return new WaitForSeconds(typingTerm);
         }
 
         yield break;
