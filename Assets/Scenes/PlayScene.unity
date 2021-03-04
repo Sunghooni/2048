@@ -1197,6 +1197,7 @@ MonoBehaviour:
   mapBorder: {fileID: 8300000, guid: be3fd741ee2405d4a8583faf6b981d25, type: 3}
   cubeInstant: {fileID: 8300000, guid: 2de9db4038ab7954bb257a90147c8324, type: 3}
   finishGame: {fileID: 8300000, guid: 4cee8eeabbc03ff4a89c79e9685275ac, type: 3}
+  typing: {fileID: 8300000, guid: 52b119290397a114d81b8e0816f662c1, type: 3}
 --- !u!82 &1771737296
 AudioSource:
   m_ObjectHideFlags: 0

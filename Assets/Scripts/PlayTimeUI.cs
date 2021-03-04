@@ -39,10 +39,15 @@ public class PlayTimeUI : MonoBehaviour
         float typingTerm = 0.15f;
         AddTimeToTexts();
 
+        SoundManager.instance.PlayTyping();
+
         for (int i = 0; i < texts.Length; i++)
         {
-            gameObject.GetComponent<Text>().text = texts.Substring(0, i + 1);
             yield return new WaitForSeconds(typingTerm);
+            gameObject.GetComponent<Text>().text = texts.Substring(0, i + 1);
         }
+
+        SoundManager.instance.StopPlaying();
+        yield break;
     }
 }

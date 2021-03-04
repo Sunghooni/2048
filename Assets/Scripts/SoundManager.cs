@@ -13,10 +13,16 @@ public class SoundManager : MonoBehaviour
     public AudioClip mapBorder;
     public AudioClip cubeInstant;
     public AudioClip finishGame;
+    public AudioClip typing;
 
     private void Awake()
     {
         instance = gameObject.GetComponent<SoundManager>();
+    }
+    
+    public void StopPlaying()
+    {
+        audioSource.Stop();
     }
 
     public void PlayMapCube()
@@ -37,5 +43,10 @@ public class SoundManager : MonoBehaviour
     public void PlayFinishGame()
     {
         audioSource.PlayOneShot(finishGame);
+    }
+
+    public void PlayTyping()
+    {
+        audioSource.PlayOneShot(typing);
     }
 }
