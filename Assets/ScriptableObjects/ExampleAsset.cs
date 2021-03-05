@@ -5,8 +5,7 @@ using UnityEditor;
 
 public class ExampleAsset : ScriptableObject
 {
-    [SerializeField]
-    private string str;
+    public string str;
 
 
     [MenuItem("Example/Create ExampleAsset Instance")]

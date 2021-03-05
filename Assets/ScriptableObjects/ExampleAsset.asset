@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8964e506928824489db7ee1f6dd9eb, type: 3}
   m_Name: ExampleAsset
   m_EditorClassIdentifier: 
-  str: 
+  str: Hello World
