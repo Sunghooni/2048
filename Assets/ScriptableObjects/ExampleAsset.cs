@@ -9,13 +9,13 @@ public class ExampleAsset : ScriptableObject
 
 
     [MenuItem("Example/Create ExampleAsset Instance")]
-    static void CreateExampleAssetInstance()
+    public static void CreateExampleAssetInstance()
     {
         var exampleAsset = CreateInstance<ExampleAsset>();
     }
 
     [MenuItem("Example/Create ExampleAsset")]
-    static void CreateExampleAsset()
+    public static void CreateExampleAsset()
     {
         var exampleAsset = CreateInstance<ExampleAsset>();
 

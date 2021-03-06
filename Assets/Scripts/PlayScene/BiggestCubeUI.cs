@@ -11,7 +11,7 @@ public class BiggestCubeUI : MonoBehaviour
 
     public int GetBiggestValue()
     {
-        int mapSize = _Map.MapSize;
+        int mapSize = _Map.mapSize;
         int biggestNum = 0;
 
         for(int i = 0; i < mapSize; i++)

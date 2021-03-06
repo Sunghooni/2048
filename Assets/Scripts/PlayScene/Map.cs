@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Map : MonoBehaviour
 {
@@ -18,22 +19,16 @@ public class Map : MonoBehaviour
 
     [Header ("NowInfo")]
     public bool FinishSetting = false;
-    [SerializeField]
-    private int mapSize = 3;
+
+    private const string mapSoRoot = "Assets/ScriptableObjects/Map SO.asset";
+    public int mapSize;
 
     private float cubeWidth;
-    private float firstCubeTerm = 0.5f;
+    private float StartCubeTerm = 0.5f;
 
-    public int MapSize
+    private void Awake()
     {
-        get { return mapSize; }
-
-        set
-        {
-            value = value > maxSize ? maxSize : value;
-            value = value < minSize ? minSize : value;
-            mapSize = value;
-        }
+        mapSize = AssetDatabase.LoadAssetAtPath<MapSO>(mapSoRoot).MapSize;
     }
 
     private void Start()
@@ -46,9 +41,9 @@ public class Map : MonoBehaviour
     {
         Vector3 cubePos = new Vector3(0, 0, 10);
 
-        for (int i = 0; i < MapSize; i++)
+        for (int i = 0; i < mapSize; i++)
         {
-            for (int j = 0; j < MapSize; j++)
+            for (int j = 0; j < mapSize; j++)
             {
                 cubePos.x = j * cubeWidth;
                 cubePos.y = i * cubeWidth * -1;
@@ -57,7 +52,7 @@ public class Map : MonoBehaviour
                 Instantiate(cubeType, cubePos, Quaternion.identity);
                 SoundManager.instance.PlayMapCube();
 
-                yield return new WaitForSeconds(0.3f / MapSize);
+                yield return new WaitForSeconds(0.3f / mapSize);
             }
         }
         StartCoroutine(SetBorder());
@@ -73,7 +68,7 @@ public class Map : MonoBehaviour
         Vector3 toPos = new Vector3(centerWidth, -centerWidth, 9.75f);
 
         GameObject Border = Instantiate(BorderPrefab, startPos, Quaternion.identity);
-        Border.transform.localScale = new Vector3(MapSize, MapSize, 1);
+        Border.transform.localScale = new Vector3(mapSize, mapSize, 1);
 
         float timer = 0;
 
@@ -86,7 +81,7 @@ public class Map : MonoBehaviour
             {
                 SoundManager.instance.PlayMapBorder();
 
-                yield return new WaitForSeconds(firstCubeTerm);
+                yield return new WaitForSeconds(StartCubeTerm);
                 CubeManager.SetNewCube(); //시작시 기본 제공 2개
                 CubeManager.SetNewCube();
                 FinishSetting = true;

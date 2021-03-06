@@ -9,7 +9,7 @@ public class FinishChecker : MonoBehaviour
     public bool Check2048() //Check is Completed 2048
     {
         GameObject[,] cubeArray = _CubeManager.CubeArray;
-        int arrayLength = _CubeManager.Map.MapSize;
+        int arrayLength = _CubeManager.Map.mapSize;
 
         for(int i = 0; i < arrayLength; i++)
         {
@@ -28,7 +28,7 @@ public class FinishChecker : MonoBehaviour
     public bool CheckMovable() //Check is there existing a movable cube
     {
         GameObject[,] cubeArray = _CubeManager.CubeArray;
-        int arrayLength = _CubeManager.Map.MapSize;
+        int arrayLength = _CubeManager.Map.mapSize;
 
         for (int i = 0; i < arrayLength; i++)
         {

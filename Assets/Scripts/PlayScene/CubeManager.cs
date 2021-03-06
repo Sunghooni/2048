@@ -12,10 +12,10 @@ public class CubeManager : MonoBehaviour
     private int mapSize;
     private float cubeWidth;
 
-    private void Awake()
+    private void Start()
     {
         cubeWidth = Map.BrightCube.transform.localScale.x;
-        mapSize = Map.MapSize;
+        mapSize = Map.mapSize;
         CubeArray = new GameObject[mapSize, mapSize];
     }
 
