@@ -13,3 +13,5 @@ MonoBehaviour:
   m_Name: Map SO
   m_EditorClassIdentifier: 
   mapSize: 3
+  maxSize: 5
+  minSize: 3

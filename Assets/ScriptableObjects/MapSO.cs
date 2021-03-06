@@ -6,9 +6,9 @@ using UnityEditor;
 [CreateAssetMenu]
 public class MapSO : ScriptableObject
 {
-    private int mapSize = 3;
-    private readonly int maxSize = 5;
-    private readonly int minSize = 3;
+    [SerializeField] private int mapSize = 3;
+    [SerializeField] private int maxSize = 5;
+    [SerializeField] private int minSize = 3;
 
     public int MapSize
     {
