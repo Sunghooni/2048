@@ -36,18 +36,4 @@ public class ButtonManager : MonoBehaviour
             map.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
-
-    public void SetMapSize()
-    {
-        //Maincode
-
-        GameObject main = GameObject.Find("MainButtons");
-        GameObject map = GameObject.Find("MapSetButtons");
-
-        for (int i = 0; i < 3; i++)
-        {
-            map.transform.GetChild(i).gameObject.SetActive(false);
-            main.transform.GetChild(i).gameObject.SetActive(true);
-        }
-    }
 }
