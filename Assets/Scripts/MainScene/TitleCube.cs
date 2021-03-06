@@ -6,7 +6,16 @@ public class TitleCube : MonoBehaviour
 {
     private void Start()
     {
+        GetRandomHeight();
         StartCoroutine(RotateToAngle());
+    }
+
+    private void GetRandomHeight()
+    {
+        int fixedHeight = Random.Range(0, 2) == 0 ? Random.Range(0, 10) : Random.Range(0, -10);
+
+        var originPos = gameObject.transform.position;
+        gameObject.transform.position = new Vector3(originPos.x, originPos.y + fixedHeight, originPos.z);
     }
 
     private Vector3 GetRandomAngle()

@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class TitleCubeSounder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private bool isSettled = false;
+    private float airborneTime = 0f;
+
+    private void Update()
     {
-        
+        if(!isSettled)
+        {
+            airborneTime += Time.deltaTime;
+        }
+        else
+        {
+            airborneTime = 0;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.transform.name.Equals("BackBoard") && !isSettled)
+        {
+            gameObject.GetComponent<AudioSource>().volume = airborneTime;
+            gameObject.GetComponent<AudioSource>().Play();
+            isSettled = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(isSettled)
+        {
+            Debug.Log("AirBorne");
+            isSettled = false;
+        }
     }
 }
