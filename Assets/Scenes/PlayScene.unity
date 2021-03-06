@@ -1571,6 +1571,8 @@ MonoBehaviour:
   BorderPrefab: {fileID: 2371352580920276705, guid: 70533fddeb2c20248a7a2d232418f23b,
     type: 3}
   FinishSetting: 0
+  _MapSO: {fileID: 11400000, guid: 2a4717275947be54bbbfb881b9cb4283, type: 2}
+  mapSize: 0
 --- !u!1 &1771737293
 GameObject:
   m_ObjectHideFlags: 0

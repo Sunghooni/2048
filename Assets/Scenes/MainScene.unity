@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c011c04dd57086047b8e47ee9c66a1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _MapSO: {fileID: 11400000, guid: 2a4717275947be54bbbfb881b9cb4283, type: 2}
   setMapSize: 5
 --- !u!1 &497211141
 GameObject:
@@ -897,6 +898,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c011c04dd57086047b8e47ee9c66a1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _MapSO: {fileID: 11400000, guid: 2a4717275947be54bbbfb881b9cb4283, type: 2}
   setMapSize: 3
 --- !u!1 &982158974
 GameObject:
@@ -1288,6 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c011c04dd57086047b8e47ee9c66a1c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _MapSO: {fileID: 11400000, guid: 2a4717275947be54bbbfb881b9cb4283, type: 2}
   setMapSize: 4
 --- !u!1 &1532882631
 GameObject:

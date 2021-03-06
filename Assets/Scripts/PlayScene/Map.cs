@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor;
 
 public class Map : MonoBehaviour
 {
@@ -19,8 +18,7 @@ public class Map : MonoBehaviour
 
     [Header ("NowInfo")]
     public bool FinishSetting = false;
-
-    private const string mapSoRoot = "Assets/ScriptableObjects/Map SO.asset";
+    public MapSO _MapSO;
     public int mapSize;
 
     private float cubeWidth;
@@ -28,7 +26,7 @@ public class Map : MonoBehaviour
 
     private void Awake()
     {
-        mapSize = AssetDatabase.LoadAssetAtPath<MapSO>(mapSoRoot).MapSize;
+        mapSize = _MapSO.MapSize;
     }
 
     private void Start()
