@@ -19,7 +19,7 @@ public class Cube : MonoBehaviour
     private Color[] ColorArray = new Color[11] 
     {
         new Color(234/255f, 234/255f, 234/255f),
-        new Color(250/255f, 224/255f, 212/255f),
+        new Color(255/255f, 211/255f, 176/255f),
         new Color(242/255f, 150/255f, 97/255f),
         new Color(170/255f, 78/255f, 25/255f),
         new Color(204/255f, 61/255f, 61/255f), //Original ^
