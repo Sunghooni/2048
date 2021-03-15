@@ -23,8 +23,11 @@ public class TitleCubeSounder : MonoBehaviour
     {
         if(other.transform.name.Equals("BackBoard") && !isSettled)
         {
-            gameObject.GetComponent<AudioSource>().volume = airborneTime;
-            gameObject.GetComponent<AudioSource>().Play();
+            if(gameObject.GetComponent<AudioSource>().isPlaying == false)
+            {
+                gameObject.GetComponent<AudioSource>().volume = airborneTime;
+                gameObject.GetComponent<AudioSource>().Play();
+            }
             isSettled = true;
         }
     }
