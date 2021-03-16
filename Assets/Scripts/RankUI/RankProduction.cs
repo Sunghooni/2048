@@ -59,7 +59,7 @@ public class RankProduction : MonoBehaviour
         var playerRank = Instantiate(PlayerRank, Vector3.zero, Quaternion.identity);
         playerRank.transform.SetParent(RankUI.transform);
 
-        playerRank.rectTransform.anchoredPosition = new Vector3(185, 40 + -25 * cnt, 0);
+        playerRank.rectTransform.anchoredPosition = new Vector3(120, 40 + -25 * cnt, 0);
         playerRank.rectTransform.localScale = PlayerRank.rectTransform.localScale;
     }
 
