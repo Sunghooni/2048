@@ -36,7 +36,6 @@ public class TitleCubeSounder : MonoBehaviour
     {
         if(isSettled)
         {
-            Debug.Log("AirBorne");
             isSettled = false;
         }
     }
