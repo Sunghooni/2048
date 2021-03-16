@@ -10,6 +10,9 @@ public class RankProduction : MonoBehaviour
     public GameObject RankUI;
     public Text PlayerRank;
 
+    private RankInfo rankInfo;
+    private string texts;
+
     public void RankProduct()
     {
         for (int i = 0; i < MainUI.transform.childCount; i++)
@@ -50,11 +53,23 @@ public class RankProduction : MonoBehaviour
 
     private void InstantiatePlayerRank(int cnt)
     {
-        PlayerRank.text = "player1 score : 100 time : 10s biggest : 120";
+        SetRankText(cnt);
+        PlayerRank.text = texts;
 
         var playerRank = Instantiate(PlayerRank, Vector3.zero, Quaternion.identity);
         playerRank.transform.SetParent(RankUI.transform);
-        playerRank.rectTransform.anchoredPosition = new Vector3(0, 40 + -25 * cnt, 0);
+
+        playerRank.rectTransform.anchoredPosition = new Vector3(185, 40 + -25 * cnt, 0);
         playerRank.rectTransform.localScale = PlayerRank.rectTransform.localScale;
+    }
+
+    private void SetRankText(int cnt)
+    {
+        if(cnt == 0)
+        {
+            GetRankInfo getRankInfo = GameObject.Find("GetRankInfo").GetComponent<GetRankInfo>();
+            rankInfo = getRankInfo.GetRankData();
+        }
+        texts = "ID : " + rankInfo.userId[cnt] + " / Score : " + rankInfo.userScore[cnt] + " / Time : " + rankInfo.playTime[cnt];
     }
 }
