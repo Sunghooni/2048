@@ -14,7 +14,7 @@ public class TitleCube : MonoBehaviour
     {
         int fixedHeight = Random.Range(0, 2) == 0 ? Random.Range(0, 10) : Random.Range(0, -10);
 
-        var originPos = gameObject.transform.position;
+        Vector3 originPos = gameObject.transform.position;
         gameObject.transform.position = new Vector3(originPos.x, originPos.y + fixedHeight, originPos.z);
     }
 
@@ -32,10 +32,11 @@ public class TitleCube : MonoBehaviour
         Vector3 startAngle = gameObject.transform.eulerAngles;
         Vector3 toAngle = GetRandomAngle();
         float timer = 0;
+        float timerSpeed = 0.5f;
 
         while(timer <= 1)
         {
-            timer += Time.deltaTime / 2;
+            timer += Time.deltaTime * timerSpeed;
             gameObject.transform.eulerAngles = Vector3.Lerp(startAngle, toAngle, timer);
             yield return new WaitForFixedUpdate();
         }

@@ -8,6 +8,8 @@ public class RankDeproduction : MonoBehaviour
     public GameObject MainUI;
     public GameObject RankUI;
 
+    private const float cameraDownDistance = -15f;
+
     public void Deproduct()
     {
         StartCoroutine(CameraProduct());
@@ -17,15 +19,15 @@ public class RankDeproduction : MonoBehaviour
     {
         for(int i = 0; i < RankUI.transform.childCount; i++)
         {
-            if(RankUI.transform.GetChild(i).GetComponent<PlayerRankTexts>())
+            if(RankUI.transform.GetChild(i).TryGetComponent(out PlayerRankTexts playerRankText))
             {
-                RankUI.transform.GetChild(i).GetComponent<PlayerRankTexts>().DeleteSelf();
+                playerRankText.DeleteSelf();
             }
         }
         RankUI.SetActive(false);
 
         Vector3 startPos = Camera.transform.position;
-        Vector3 toPos = startPos + Vector3.back * -15;
+        Vector3 toPos = startPos + Vector3.back * cameraDownDistance;
         float timer = 0;
 
         while (timer <= 1)

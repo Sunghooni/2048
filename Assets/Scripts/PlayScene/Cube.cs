@@ -6,7 +6,7 @@ using UnityEngine;
 public class Cube : MonoBehaviour
 {
     public int value;
-    public float speed = 3;
+    public float moveSpeed = 3;
     public bool collapable = false;
     public bool isCollaped = false;
     public GameObject collapCube = null;
@@ -16,7 +16,7 @@ public class Cube : MonoBehaviour
     private TextMeshPro TextMeshPro;
     private ScoreManager ScoreManager;
 
-    private Color[] ColorArray = new Color[11] 
+    private readonly Color[] ColorArray = new Color[11] 
     {
         new Color(234/255f, 234/255f, 234/255f),
         new Color(255/255f, 211/255f, 176/255f),
@@ -46,8 +46,12 @@ public class Cube : MonoBehaviour
 
     private void SetStartValue()
     {
+        int normalStartValue = 2;
+        int bigStartValue = 4;
         int random = Random.Range(0, 10);
-        value = random < 1 ? 4 : 2;
+        bool chanceOfFourValue = random < 1; // 4 can appear by 10 percentage
+
+        value = chanceOfFourValue ? bigStartValue : normalStartValue;
 
         ChangeColor();
     }
@@ -60,11 +64,12 @@ public class Cube : MonoBehaviour
     IEnumerator MoveMotion(Vector3 toPos)
     {
         float timer = 0;
+        float maxLerpValue = 1;
         Vector3 originPos = gameObject.transform.position;
 
-        while (timer <= 1)
+        while (timer <= maxLerpValue)
         {
-            timer += Time.deltaTime * speed;
+            timer += Time.deltaTime * moveSpeed;
             gameObject.transform.position = Vector3.Lerp(originPos, toPos, timer);
 
             yield return new WaitForFixedUpdate();
@@ -72,7 +77,7 @@ public class Cube : MonoBehaviour
 
         if (collapable)
         {
-            value *= 2;
+            value += value; //double cube value
             isCollaped = false;
             collapable = false;
 
@@ -81,7 +86,7 @@ public class Cube : MonoBehaviour
             AddValueToScore();
         }
 
-        if (!InputManager.canInput) //입력 가능 확인
+        if (!InputManager.canInput) //check player can input
         {
             InputManager.canInput = true;
             CubeManager.SetNewCube();
@@ -92,14 +97,14 @@ public class Cube : MonoBehaviour
 
     private void ChangeColor()
     {
-        int arrayNum = -1;
+        int colorNum = -1;
 
-        for(int i = value; i != 1; i /= 2)
+        for(int i = value; i != 1; i /= 2) //get proper cnt of ColorArray
         {
-            arrayNum++;
+            colorNum++;
         }
 
-        gameObject.GetComponent<Renderer>().material.color = ColorArray[arrayNum];
+        gameObject.GetComponent<Renderer>().material.color = ColorArray[colorNum];
         TextMeshPro.text = value.ToString();
     }
 

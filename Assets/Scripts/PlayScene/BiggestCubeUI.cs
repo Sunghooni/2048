@@ -22,9 +22,12 @@ public class BiggestCubeUI : MonoBehaviour
                 {
                     continue;
                 }
-                else if(_CubeManager.CubeArray[i, j].GetComponent<Cube>().value > biggestNum)
+
+                int cubeValue = _CubeManager.CubeArray[i, j].GetComponent<Cube>().value;
+
+                if(cubeValue > biggestNum)
                 {
-                    biggestNum = _CubeManager.CubeArray[i, j].GetComponent<Cube>().value;
+                    biggestNum = cubeValue;
                 }
             }
         }
@@ -33,13 +36,14 @@ public class BiggestCubeUI : MonoBehaviour
 
     public IEnumerator ShowTexts()
     {
+        Text _Text = gameObject.GetComponent<Text>();
         float typingTerm = 0.15f;
         texts += GetBiggestValue().ToString();
 
         for (int i = 0; i < texts.Length; i++)
         {
             yield return new WaitForSeconds(typingTerm);
-            gameObject.GetComponent<Text>().text = texts.Substring(0, i + 1);
+            _Text.text = texts.Substring(0, i + 1);
         }
 
         yield break;

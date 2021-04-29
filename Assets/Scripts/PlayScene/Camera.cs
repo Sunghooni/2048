@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    public Map Map;
-    private float fixZ = -3.25f;
+    public Map _Map;
+    private const float fixedDistancePerIncreasedMapSize = -3.25f;
+    private const float basicMapSize = 3;
 
     private void Start()
     {
@@ -14,9 +15,9 @@ public class Camera : MonoBehaviour
 
     private void GetCameraPos()
     {
-        float cubeWidth = Map.BrightCube.transform.localScale.x;
-        float width = Map.mapSize * cubeWidth / 2 - cubeWidth / 2;
-        float zPos = (Map.mapSize - 3) * fixZ;
+        float cubeWidth = _Map.BrightCube.transform.localScale.x;
+        float width = _Map.mapSize * cubeWidth / 2 - cubeWidth / 2;
+        float zPos = (_Map.mapSize - basicMapSize) * fixedDistancePerIncreasedMapSize;
 
         gameObject.transform.position = new Vector3(width, -width, zPos);
     }

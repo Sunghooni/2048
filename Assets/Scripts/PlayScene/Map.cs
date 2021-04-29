@@ -17,12 +17,12 @@ public class Map : MonoBehaviour
     public GameObject BorderPrefab;
 
     [Header ("NowInfo")]
-    public bool FinishSetting = false;
+    public bool finishSetting = false;
     public MapSO _MapSO;
     public int mapSize;
 
     private float cubeWidth;
-    private float StartCubeTerm = 0.5f;
+    private const float StartCubeTerm = 0.5f;
 
     private void Awake()
     {
@@ -82,7 +82,7 @@ public class Map : MonoBehaviour
                 yield return new WaitForSeconds(StartCubeTerm);
                 CubeManager.SetNewCube(); //시작시 기본 제공 2개
                 CubeManager.SetNewCube();
-                FinishSetting = true;
+                finishSetting = true;
                 break;
             }
 
