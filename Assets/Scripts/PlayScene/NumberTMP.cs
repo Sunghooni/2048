@@ -6,10 +6,12 @@ using UnityEngine;
 public class NumberTMP : MonoBehaviour
 {
     private FinishManager _FinishManager;
+    private TextMeshPro tmp;
 
     private void Awake()
     {
         _FinishManager = GameObject.Find("FinishManager").GetComponent<FinishManager>();
+        tmp = gameObject.GetComponent<TextMeshPro>();
     }
 
     private void FixedUpdate()
@@ -19,9 +21,11 @@ public class NumberTMP : MonoBehaviour
 
     public void FadeNumberUI()
     {
-        if(_FinishManager.isFinished && gameObject.GetComponent<TextMeshPro>().fontSizeMax > 0)
+        int textSideDownSpeed = 3;
+
+        if(_FinishManager.isFinished && tmp.fontSizeMax > 0)
         {
-            gameObject.GetComponent<TextMeshPro>().fontSizeMax -= 3 * Time.deltaTime;
+            tmp.fontSizeMax -= textSideDownSpeed * Time.deltaTime;
         }
     }
 }

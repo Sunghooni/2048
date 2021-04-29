@@ -9,13 +9,13 @@ public class MapSizeButton : MonoBehaviour
 
     public void SetMapSize()
     {
-        //Maincode
+        float childCount = 3f;
         _MapSO.MapSize = setMapSize;
 
         GameObject main = GameObject.Find("MainButtons");
         GameObject map = GameObject.Find("MapSetButtons");
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < childCount; i++)
         {
             map.transform.GetChild(i).gameObject.SetActive(false);
             main.transform.GetChild(i).gameObject.SetActive(true);

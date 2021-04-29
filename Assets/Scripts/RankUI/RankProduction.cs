@@ -12,6 +12,7 @@ public class RankProduction : MonoBehaviour
 
     private RankInfo rankInfo;
     private string texts;
+    private const float cameraUpDistance = 15f;
 
     public void RankProduct()
     {
@@ -25,7 +26,7 @@ public class RankProduction : MonoBehaviour
     IEnumerator CameraProduct()
     {
         Vector3 startPos = Camera.transform.position;
-        Vector3 toPos = startPos + Vector3.back * 15;
+        Vector3 toPos = startPos + Vector3.back * cameraUpDistance;
         float timer = 0;
 
         while(timer <= 1)
@@ -43,9 +44,11 @@ public class RankProduction : MonoBehaviour
 
     IEnumerator ShowPlayerRanks()
     {
+        float showRankDelay = 0.2f;
+
         for(int i = 0; i < 10; i++)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(showRankDelay);
             InstantiatePlayerRank(i);
         }
         yield break;
@@ -53,13 +56,17 @@ public class RankProduction : MonoBehaviour
 
     private void InstantiatePlayerRank(int cnt)
     {
+        float textXpos = 120;
+        float textYpos = 40;
+        float textMargin = -25;
+
         SetRankText(cnt);
         PlayerRank.text = texts;
 
         var playerRank = Instantiate(PlayerRank, Vector3.zero, Quaternion.identity);
         playerRank.transform.SetParent(RankUI.transform);
 
-        playerRank.rectTransform.anchoredPosition = new Vector3(120, 40 + -25 * cnt, 0);
+        playerRank.rectTransform.anchoredPosition = new Vector3(textXpos, textYpos + textMargin * cnt, 0);
         playerRank.rectTransform.localScale = PlayerRank.rectTransform.localScale;
     }
 

@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class TitleCubeSounder : MonoBehaviour
 {
+    private AudioSource audioSource;
     private bool isSettled = false;
     private float airborneTime = 0f;
+
+    private void Awake()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -23,10 +29,10 @@ public class TitleCubeSounder : MonoBehaviour
     {
         if(other.transform.name.Equals("BackBoard") && !isSettled)
         {
-            if(gameObject.GetComponent<AudioSource>().isPlaying == false)
+            if(audioSource.isPlaying == false)
             {
-                gameObject.GetComponent<AudioSource>().volume = airborneTime;
-                gameObject.GetComponent<AudioSource>().Play();
+                audioSource.volume = airborneTime;
+                audioSource.Play();
             }
             isSettled = true;
         }

@@ -42,19 +42,19 @@ public class FinishChecker : MonoBehaviour
 
                     if (i + 1 < arrayLength && cubeArray[i + 1, j] != null)
                     {
-                        isMovable = cubeArray[i + 1, j].GetComponent<Cube>().value == thisValue ? true : isMovable;
+                        isMovable = cubeArray[i + 1, j].GetComponent<Cube>().value == thisValue || isMovable;
                     }
                     if (i - 1 >= 0 && cubeArray[i - 1, j] != null)
                     {
-                        isMovable = cubeArray[i - 1, j].GetComponent<Cube>().value == thisValue ? true : isMovable;
+                        isMovable = cubeArray[i - 1, j].GetComponent<Cube>().value == thisValue || isMovable;
                     }
                     if (j + 1 < arrayLength && cubeArray[i, j + 1] != null)
                     {
-                        isMovable = cubeArray[i, j + 1].GetComponent<Cube>().value == thisValue ? true : isMovable;
+                        isMovable = cubeArray[i, j + 1].GetComponent<Cube>().value == thisValue || isMovable;
                     }
                     if (j - 1 >= 0 && cubeArray[i, j - 1] != null)
                     {
-                        isMovable = cubeArray[i, j - 1].GetComponent<Cube>().value == thisValue ? true : isMovable;
+                        isMovable = cubeArray[i, j - 1].GetComponent<Cube>().value == thisValue || isMovable;
                     }
                 }
                 else
