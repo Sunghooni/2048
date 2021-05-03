@@ -9,16 +9,16 @@ public class MapSizeButton : MonoBehaviour
 
     public void SetMapSize()
     {
-        float childCount = 3f;
-        _MapSO.MapSize = setMapSize;
-
-        GameObject main = GameObject.Find("MainButtons");
-        GameObject map = GameObject.Find("MapSetButtons");
+        GameObject mainButtons = GameObject.Find("MainButtons");
+        GameObject mapButtons = GameObject.Find("MapSetButtons");
+        float childCount = mapButtons.transform.childCount;
 
         for (int i = 0; i < childCount; i++)
         {
-            map.transform.GetChild(i).gameObject.SetActive(false);
-            main.transform.GetChild(i).gameObject.SetActive(true);
+            mapButtons.transform.GetChild(i).gameObject.SetActive(false);
+            mainButtons.transform.GetChild(i).gameObject.SetActive(true);
         }
+
+        _MapSO.MapSize = setMapSize;
     }
 }
